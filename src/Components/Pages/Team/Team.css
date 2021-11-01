@@ -1,0 +1,29 @@
+
+/* our team styling */
+
+.card-image {
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+}
+.overlay {
+    top: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: 0.3s linear all;
+}
+.card-image:hover .overlay {
+    top: 0%;
+}
+.team-text {
+    color: #F97150;
+}
+.social-icons {
+    cursor: pointer;
+}
+.social-icons:hover {
+    font-size: 20px;
+}
+@keyframes anim {
+    from {top: 100%;}
+    to {top: 0%;}
+}

@@ -1,0 +1,49 @@
+/* this is contact styling */
+
+.picture {
+    height: 88vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 50% 100%, 0% 80%);
+}
+.picture h1 {
+    font-weight: bold;
+    font-size: 50px;
+    line-height: 1.5;
+}
+.picture p {
+    font-size: 18px;
+    line-height: 1.33;
+    letter-spacing: .4px;
+    max-width: 785px;
+}
+.icon {
+    height: 80px;
+    width: 80px;
+    margin: auto;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background-color: tomato;
+    color: white;
+}
+.card-style {
+    height: 260px;
+}
+
+@media only screen and (max-width: 688px) {
+    .picture>h1 {
+        font-size: 30px;
+    }
+    .picture>p {
+        font-size: 15px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
