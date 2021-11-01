@@ -1,0 +1,33 @@
+/* Home banner styling */
+.home-banner {
+    height: 95vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.home-banner h1 {
+    font-size: 50px;
+    font-weight: bolder;
+}
+.home-banner h1, h4 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.home-banner .btn {
+    background-color: #F97150;
+    margin-top: 10px;
+    color: white;
+}
+@media only screen and (max-width: 688px) {
+    .home-banner h1 {
+        font-size: 25px;
+    }
+    .home-banner h4 {
+        margin: 10px 10px;
+    }
+
+}

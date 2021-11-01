@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const TopServices = () => {
     const [services, setServices] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/services')
+        fetch('https://fathomless-bastion-44157.herokuapp.com/services')
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])
@@ -21,7 +21,7 @@ const TopServices = () => {
                         const { _id, picture, title, shortDescription, price, rating, time, maxPeople } = service;
                         return (
                             <Col key={_id}>
-                                <Card className="h-100">
+                                <Card className="h-100 card-shadow">
                                     <div>
                                         <Card.Img variant="top" src={picture} />
                                     </div>
@@ -38,7 +38,7 @@ const TopServices = () => {
                                         </div>
                                         <Link to={`/service/${_id}`}>
                                             <Button
-                                                className="btn-danger px-4 fw-bold"
+                                                className="btn text-white px-4 fw-bold"
                                                 style={{ backgroundColor: '#F97150' }}
                                             >Book Now
                                             </Button>
@@ -50,6 +50,10 @@ const TopServices = () => {
                     })
                 }
             </Row>
+            <Link to="/services">
+                <Button style={{ backgroundColor: '#F97150' }}
+                    className="mt-5 text-white btn px-5 fw-bold">See More</Button>
+            </Link>
         </div>
     );
 };

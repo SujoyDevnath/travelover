@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 const ManageAllOrders = () => {
     const [allOrders, setAllOrders] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/allOrders')
+        fetch('https://fathomless-bastion-44157.herokuapp.com/allOrders')
             .then(res => res.json())
             .then(data => setAllOrders(data))
     }, [allOrders]);
 
     // updating status
     const handleUpdatedStatus = (_id, status, ...rest) => {
-        const url = `http://localhost:5000/allOrders/${_id}`;
+        const url = `https://fathomless-bastion-44157.herokuapp.com/allOrders/${_id}`;
         const updatedStatus = 'approved';
         const updatedUser = { status: updatedStatus, ...rest }
         // setStatus(updatedStatus);
@@ -26,18 +26,21 @@ const ManageAllOrders = () => {
 
     // deleting order
     const handleDeleteOrder = (_id) => {
-        const url = `http://localhost:5000/allOrders/${_id}`;
-        fetch(url, {
-            method: 'DELETE',
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.deletedCount > 0) {
-                    alert('deleted seccessfully');
-                    const remainingOrders = allOrders.filter(order => order._id !== _id)
-                    setAllOrders(remainingOrders);
-                }
+        let confirm = window.confirm("Do you want to delete the order ?");
+        if (confirm) {
+            const url = `https://fathomless-bastion-44157.herokuapp.com/allOrders/${_id}`;
+            fetch(url, {
+                method: 'DELETE',
             })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        alert('Order deleted seccessfully');
+                        const remainingOrders = allOrders.filter(order => order._id !== _id)
+                        setAllOrders(remainingOrders);
+                    }
+                })
+        }
     }
 
     return (

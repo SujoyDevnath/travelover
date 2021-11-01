@@ -4,17 +4,15 @@ import useAuth from '../../Hooks/useAuth';
 const MyOrders = () => {
     const { user } = useAuth();
     const [allOrders, setAllOrders] = useState([]);
-    // const [status, setStatus] = useState(null);
     useEffect(() => {
-        fetch('http://localhost:5000/allOrders')
+        fetch('https://fathomless-bastion-44157.herokuapp.com/allOrders')
             .then(res => res.json())
             .then(data => setAllOrders(data))
-    }, []);
-    allOrders.map(order => console.log(order.user.email));
+    }, [allOrders]);
     const myOrders = allOrders.filter(order => order.user.email === user.email);
 
     const handleUpdatedStatus = (_id, status, ...rest) => {
-        const url = `http://localhost:5000/allOrders/${_id}`;
+        const url = `https://fathomless-bastion-44157.herokuapp.com/allOrders/${_id}`;
         const updatedStatus = 'approved';
         const updatedUser = { status: updatedStatus, ...rest }
         // setStatus(updatedStatus);
@@ -27,6 +25,22 @@ const MyOrders = () => {
         })
     }
 
+    // deleting order
+    const handleDeleteOrder = (_id) => {
+        const url = `https://fathomless-bastion-44157.herokuapp.com/allOrders/${_id}`;
+        fetch(url, {
+            method: 'DELETE',
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    alert('deleted seccessfully');
+                    const remainingOrders = allOrders.filter(order => order._id !== _id)
+                    setAllOrders(remainingOrders);
+                }
+            })
+    }
+
     return (
         <div className="my-5 py-5 container">
             <h2>My orders</h2>
@@ -35,7 +49,6 @@ const MyOrders = () => {
                     <tr>
                         <th scope="col">Order list</th>
                         <th scope="col">status</th>
-                        <th scope="col">approved</th>
                         <th scope="col">delete</th>
                     </tr>
                 </thead>
@@ -44,7 +57,6 @@ const MyOrders = () => {
                     {
                         myOrders.map(order => {
                             const { _id, service, user, data, status } = order;
-                            console.log(order)
                             return (
                                 <tr key={_id}>
                                     <td>
@@ -57,9 +69,8 @@ const MyOrders = () => {
                                             </li>
                                         </ul>
                                     </td>
-                                    <td className="my-auto">{status}</td>
                                     <td><button className="btn-success" onClick={() => handleUpdatedStatus(_id, status, data, service, user)}>{status}</button></td>
-                                    <td><button className="btn-danger">delete</button></td>
+                                    <td><button className="btn-danger" onClick={() => handleDeleteOrder(_id)}>delete</button></td>
                                 </tr>
                             )
                         })

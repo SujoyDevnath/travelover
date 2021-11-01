@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import ServiceCart from '../ServiceDetails/ServiceCart/ServiceCart';
+import ServiceCart from '../ServiceCart/ServiceCart';
 import ServiceDetails from '../ServiceDetails/ServiceDetails';
 import './Service.css'
 
@@ -8,7 +8,7 @@ const Service = () => {
     const { serviceId } = useParams();
     const [service, setService] = useState({});
     useEffect(() => {
-        fetch(`http://localhost:5000/services/${serviceId}`)
+        fetch(`https://fathomless-bastion-44157.herokuapp.com/services/${serviceId}`)
             .then(res => res.json())
             .then(data => setService(data))
     }, [])

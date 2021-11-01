@@ -13,6 +13,8 @@ import AuthProvider from './contexts/AuthProvider';
 import AddNewService from './Components/Pages/AddNewService/AddNewService';
 import MyOrders from './Components/Pages/MyOrders/MyOrders';
 import ManageAllOrders from './Components/Pages/ManageAllOrders/ManageAllOrders';
+import Signup from './Components/Pages/Signup/Signup';
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 
 function App() {
   return (
@@ -30,9 +32,9 @@ function App() {
             <Route path="/services">
               <Services></Services>
             </Route>
-            <Route path="/service/:serviceId">
+            <PrivateRoute path="/service/:serviceId">
               <Service></Service>
-            </Route>
+            </PrivateRoute>
             <Route path="/team">
               <Team></Team>
             </Route>
@@ -41,6 +43,9 @@ function App() {
             </Route>
             <Route path="/login">
               <Login></Login>
+            </Route>
+            <Route path="/signup">
+              <Signup></Signup>
             </Route>
             <Route path="/addnewservice">
               <AddNewService></AddNewService>

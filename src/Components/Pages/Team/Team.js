@@ -13,7 +13,7 @@ const Team = () => {
     // fetching team data from public
     const [team, setTeam] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/team')
+        fetch('https://fathomless-bastion-44157.herokuapp.com/team')
             .then(res => res.json())
             .then(data => setTeam(data))
     }, [])

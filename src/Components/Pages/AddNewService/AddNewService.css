@@ -5,6 +5,18 @@
     align-items: center;
 }
 .add-service form input, textarea{
-    width: 40%;
+    width: 50%;
+    padding: 10px;
     margin-bottom: 10px;
+}
+.addService-button {
+    background-color: #F97150;
+    font-weight: bold;
+    color: white;
+}
+
+@media only screen and (max-width: 688px) {
+    .add-service form input, textarea{
+        width: 60%;
+    }
 }

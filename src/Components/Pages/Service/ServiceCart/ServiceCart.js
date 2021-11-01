@@ -1,5 +1,5 @@
 import React from 'react';
-import useAuth from '../../../../Hooks/useAuth';
+import useAuth from '../../../Hooks/useAuth';
 import { useForm } from "react-hook-form";
 import './ServiceCart.css';
 import { useHistory } from 'react-router-dom';
@@ -12,7 +12,7 @@ const ServiceCart = ({ service }) => {
     const onSubmit = data => {
         const doc = { data, status: 'pending', user, service };
         console.log(doc);
-        fetch('http://localhost:5000/allOrders', {
+        fetch('https://fathomless-bastion-44157.herokuapp.com/allOrders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -22,7 +22,7 @@ const ServiceCart = ({ service }) => {
             .then(res => res.json())
             .then(data => {
                 if (data.insertedId) {
-                    alert('Successfully added the user.')
+                    alert('Successfully placed the order.')
                     history.push('/myOrders')
                     reset();
                 }

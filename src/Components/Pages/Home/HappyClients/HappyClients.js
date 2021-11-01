@@ -9,7 +9,7 @@ const quote = <FontAwesomeIcon icon={faQuoteLeft} size="2x" />
 const HappyClients = () => {
     const [reviews, setReviews] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/reviews')
+        fetch('https://fathomless-bastion-44157.herokuapp.com/reviews')
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])
@@ -22,7 +22,7 @@ const HappyClients = () => {
                         const { id, name, comment, picture, job } = review;
                         return (
                             <Col key={id}>
-                                <Card className="p-5 clients-card">
+                                <Card className="p-5 clients-card h-100">
                                     <div className="text-start">
                                         <div className="mb-4">{quote}</div>
                                         <p>{comment}</p>

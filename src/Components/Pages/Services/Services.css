@@ -1,0 +1,11 @@
+.services-icon {
+    color: #F97150;
+    font-size: 8px;
+}
+.card-shadow {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transition: 0.2s linear all;
+}
+.card-shadow:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
