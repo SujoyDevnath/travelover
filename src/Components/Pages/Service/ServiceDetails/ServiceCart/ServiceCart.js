@@ -41,7 +41,7 @@ const ServiceCart = ({ service }) => {
                 </div>
                 <input className="service-form-submit" type="submit" />
             </form>
-            <p>test</p>
+
         </div>
     );
 };
